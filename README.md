@@ -42,7 +42,7 @@ npm i @squadms/rcon-worker
 ### Running
 To start it, simply run the follwing command:
 ```
-npm explore @squadms/rcon-worker -- npm run start --env=/path/to/.env
+npm explore @squadms/rcon-worker -- npm run start -- --env=/path/to/.env
 ```
 
 # Todo's
