@@ -21,7 +21,7 @@ This will install only the rcon worker, assuming you are already running your AP
 To install it as standalone, simply clone/download the repository, open the folder in a command line and run 
 the following command:
 ```
-npm install
+npm i
 ```
 
 ### Running
@@ -36,7 +36,7 @@ This will add the rcon-worker to your project as an dependency. That way it will
 ### Installation
 To install it as an dependency of your project, simply run the following command to add it to your package.json:
 ```
-npm install @squadms/rcon-worker
+npm i @squadms/rcon-worker
 ```
 
 ### Running
