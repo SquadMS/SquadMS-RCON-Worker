@@ -4,6 +4,7 @@ import path from 'path';
 
 import SquadRCONWorker from'./SquadRCONWorker.js';
 import Logger from './RCON/core/logger.js';
+Logger.setVerboseness('Bootstrap', 1);
 
 /* Load package.json */
 import packageJSON from './package.json';
@@ -39,12 +40,16 @@ if (args['--version']) {
 }
 
 /* Load .ENV */
+const envPath = args['--env'] ?? path.resolve(process.cwd() + '.env');
+Logger.verbose('Bootstrap', 1, 'Loading .env from "' + envPath + '"...');
 dotenv.config({
-    path: path.resolve(args['--env'] ?? process.cwd(), '.env'),
+    path: envPath,
 });
+Logger.verbose('Bootstrap', 1, '.env loaded!');
 
 /* Configure Logger */
 const verbosity = args['--verbose'] ?? 0;
+Logger.verbose('Bootstrap', 1, 'Setting verbosity to ' + verbosity);
 Logger.setVerboseness('RCON', verbosity);
 Logger.setVerboseness('SquadRcon', verbosity);
 Logger.setVerboseness('Worker', verbosity);
@@ -52,6 +57,7 @@ Logger.setVerboseness('APIClient', verbosity);
 Logger.setVerboseness('APIServer', verbosity);
 
 /* Initialize the Worker */
+Logger.verbose('Bootstrap', 1, 'Configuring worker...');
 const worker = new SquadRCONWorker();
 
 /* Register stop listeners to shutdown gracefully */
@@ -63,4 +69,5 @@ process.on('SIGINT', () => {
 });
 
 /* Run it */
+Logger.verbose('Bootstrap', 1, 'Configured! Starting...');
 worker.run();
