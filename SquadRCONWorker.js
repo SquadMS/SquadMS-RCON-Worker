@@ -1,18 +1,11 @@
 import SquadServer from './RCON/squad-server.js';
 import APIClient from './API/APIClient.js';
 import APIServer from './API/APIServer.js';
-import path from 'path';
-import dotenv from 'dotenv';
 import Logger from './RCON/core/logger.js';
 
 export default class SquadRCONWorker {
     constructor() {
         Logger.verbose('Worker', 1, 'Initializing...');
-
-        /* Load .ENV */
-        dotenv.config({
-            path: path.resolve(process.cwd(), '.env'),
-        });
 
         /* Server lookup */
         this.servers = {};
