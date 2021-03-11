@@ -1,5 +1,5 @@
 {
-    "name": "squad-rcon-worker",
+    "name": "@squadms/rcon-worker",
     "version": "0.1.0",
     "type": "module",
     "dependencies": {

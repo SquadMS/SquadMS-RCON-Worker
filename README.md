@@ -12,10 +12,37 @@ sudo apt update && sudo apt upgrade -y && sudo apt install nodejs npm && sudo np
 ```
 
 # Installation
-To install it, simply clone/download the repository, open the folder in a command line and run 
+The worker can be installed as standalone or as an dependency to your existing project.
+
+## Standalone
+This will install only the rcon worker, assuming you are already running your API-Backend somewhere else.
+
+### Installation
+To install it as standalone, simply clone/download the repository, open the folder in a command line and run 
 the following command:
 ```
 npm install
+```
+
+### Running
+To start it, simply run the follwing command:
+```
+npm run start
+```
+
+## Dependency
+This will add the rcon-worker to your project as an dependency. That way it will always be shipped & updated with yout main project (assuming it has a package.json).
+
+### Installation
+To install it as an dependency of your project, simply run the following command to add it to your package.json:
+```
+npm install @squadms/rcon-worker
+```
+
+### Running
+To start it, simply run the follwing command:
+```
+npm explore @squadms/rcon-worker -- npm run start
 ```
 
 # Todo's
