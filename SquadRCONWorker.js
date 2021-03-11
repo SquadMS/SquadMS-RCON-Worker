@@ -11,7 +11,7 @@ export default class SquadRCONWorker {
 
         /* Load .ENV */
         dotenv.config({
-            path: path.resolve(process.cwd(), '../', '.env'),
+            path: path.resolve(process.cwd(), '.env'),
         });
 
         /* Server lookup */
