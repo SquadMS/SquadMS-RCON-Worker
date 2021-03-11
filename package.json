@@ -2,6 +2,7 @@
     "name": "@squadms/rcon-worker",
     "version": "0.1.0",
     "type": "module",
+    "license": "BOOST",
     "dependencies": {
         "axios": "^0.21.1",
         "chalk": "^4.1.0",
