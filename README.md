@@ -50,6 +50,7 @@ npm explore @squadms/rcon-worker -- npm run start
 - Correctly integrate SquadJS as an dependency to improve maintainability
 - Test server change endpoint
 - Add HTTPS support to run secure without an reverse proxy
+- Add auth token support to APIServer
 
 # Thanks
 - [Tommy S.](https://github.com/Thomas-Smyth) creator of SquadJS and the RCON implementation
