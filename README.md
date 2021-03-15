@@ -1,5 +1,5 @@
 # SquadMS-RCON-Worker
-The SquadMS RCON Worker, meant to be deployed seperately and to communicate using a small API. 
+The SquadMS RCON Worker, meant to be deployed seperately and to communicate with SquadMS using a small API. 
 Does solve the multiple RCON connections issue efficiently if used correctly. Currently RCON only.
 
 # Requirements
