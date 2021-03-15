@@ -46,7 +46,7 @@ export default class APIClient {
 
     async postAdminCamerUnposess(serverId, steamId64, player, time) {
         try {
-            await this._post(routes.camPosessed, {
+            await this._post(routes.camUnposessed, {
                 server: serverId,
                 steamId64: steamId64,
                 player: player,
