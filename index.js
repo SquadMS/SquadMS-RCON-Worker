@@ -48,7 +48,7 @@ dotenv.config({
 Logger.verbose('Bootstrap', 1, '.env loaded!');
 
 /* Set timezone or default UTC */
-process.env.TZ = process.env.SQMS_SJSWORKER_TIMEZONE ?? 'UTC;
+process.env.TZ = process.env.SQMS_SJSWORKER_TIMEZONE ?? process.env.TZ;
 
 /* Configure Logger */
 const verbosity = args['--verbose'] ?? 0;
