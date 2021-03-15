@@ -99,7 +99,7 @@ export default class APIClient {
 
     async getServers() {
         try {
-            return await this._get(routes.getServers);
+            return await this._get(routes.definitions.getServers);
         } catch(e) {
             Logger.verbose('APIClient', 1, 'Error fetching Servers: ' + e.message);
             throw e;
