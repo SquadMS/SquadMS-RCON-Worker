@@ -145,15 +145,15 @@ export default class SquadRCONWorker {
 
         /* Listen for events */
         server.removeAllListeners('CHAT_MESSAGE').on('CHAT_MESSAGE', event => {
-            this.apiClient.postMessage(data.id, event.chat, event.steamID, event.name, event.message, event.time);
+            this.apiClient.postMessage(data.id, event.chat, event.steamID, event.name, event.message, event.time.toIsoString());
         });
 
         server.removeAllListeners('POSSESSED_ADMIN_CAMERA').on('POSSESSED_ADMIN_CAMERA', event => {
-            this.apiClient.postAdminCameraPosess(data.id, event.steamID, event.name, event.time);
+            this.apiClient.postAdminCameraPosess(data.id, event.steamID, event.name, event.time.toIsoString());
         });
 
         server.removeAllListeners('UNPOSSESSED_ADMIN_CAMERA').on('UNPOSSESSED_ADMIN_CAMERA', event => {
-            this.apiClient.postAdminCamerUnposess(data.id, event.steamID, event.name, event.time);
+            this.apiClient.postAdminCamerUnposess(data.id, event.steamID, event.name, event.time.toIsoString());
         });
 
         try {
