@@ -17,7 +17,7 @@ export default class APIClient {
 
     async postMessage(serverId, chat, steamId64, player, message, time) {
         try {
-            await this._post(routes.definitions.chatMessage, {
+            await this._post(routes.chatMessage, {
                 server: serverId,
                 chat: chat,
                 steamId64: steamId64,
@@ -33,7 +33,7 @@ export default class APIClient {
 
     async postAdminCameraPosess(serverId, steamId64, player, time) {
         try {
-            await this._post(routes.definitions.camPosessed, {
+            await this._post(routes.camPosessed, {
                 server: serverId,
                 steamId64: steamId64,
                 player: player,
@@ -46,7 +46,7 @@ export default class APIClient {
 
     async postAdminCamerUnposess(serverId, steamId64, player, time) {
         try {
-            await this._post(routes.definitions.camPosessed, {
+            await this._post(routes.camPosessed, {
                 server: serverId,
                 steamId64: steamId64,
                 player: player,
@@ -59,7 +59,7 @@ export default class APIClient {
 
     async postPlayerWarned(serverId, player, message, time) {
         try {
-            await this._post(routes.definitions.warned, {
+            await this._post(routes.warned, {
                 server: serverId,
                 player: player,
                 message: message,
@@ -72,7 +72,7 @@ export default class APIClient {
 
     async postPlayerKicked(serverId, steamId64, player, time) {
         try {
-            await this._post(routes.definitions.kicked, {
+            await this._post(routes.kicked, {
                 server: serverId,
                 steamId64: steamId64,
                 player: player,
@@ -85,7 +85,7 @@ export default class APIClient {
 
     async postPlayerBanned(serverId, steamId64, player, interval, time) {
         try {
-            await this._post(routes.definitions.banned, {
+            await this._post(routes.banned, {
                 server: serverId,
                 steamId64: steamId64,
                 player: player,
@@ -99,7 +99,7 @@ export default class APIClient {
 
     async getServers() {
         try {
-            return await this._get(routes.definitions.getServers);
+            return await this._get(routes.getServers);
         } catch(e) {
             Logger.verbose('APIClient', 1, 'Error fetching Servers: ' + e.message);
             throw e;
