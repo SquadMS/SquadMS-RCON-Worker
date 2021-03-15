@@ -156,6 +156,18 @@ export default class SquadRCONWorker {
             this.apiClient.postAdminCamerUnposess(data.id, event.steamID, event.name, event.time.toIsoString());
         });
 
+        server.removeAllListeners('PLAYER_WARNED').on('PLAYER_WARNED', event => {
+            this.apiClient.postPlayerWarned(data.id, event.name, event.message, event.time.toIsoString());
+        });
+
+        server.removeAllListeners('PLAYER_KICKED').on('PLAYER_KICKED', event => {
+            this.apiClient.postPlayerKicked(data.id, event.steamID, event.name, event.time.toIsoString());
+        });
+
+        server.removeAllListeners('PLAYER_BANNED').on('PLAYER_BANNED', event => {
+            this.apiClient.postPlayerBanned(data.id, event.steamID, event.name, event.interval, event.time.toIsoString());
+        });
+
         try {
             /* Watch the servers rcon socket */
             await server.start();

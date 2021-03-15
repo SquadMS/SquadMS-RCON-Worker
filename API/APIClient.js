@@ -17,7 +17,7 @@ export default class APIClient {
 
     async postMessage(serverId, chat, steamId64, player, message, time) {
         try {
-            await this._post(routes.postChatMessage, {
+            await this._post(routes.definitions.chatMessage, {
                 server: serverId,
                 chat: chat,
                 steamId64: steamId64,
@@ -33,7 +33,7 @@ export default class APIClient {
 
     async postAdminCameraPosess(serverId, steamId64, player, time) {
         try {
-            await this._post(routes.postAdminCameraPosessed, {
+            await this._post(routes.definitions.camPosessed, {
                 server: serverId,
                 steamId64: steamId64,
                 player: player,
@@ -46,10 +46,50 @@ export default class APIClient {
 
     async postAdminCamerUnposess(serverId, steamId64, player, time) {
         try {
-            await this._post(routes.postAdminCameraUnposessed, {
+            await this._post(routes.definitions.camPosessed, {
                 server: serverId,
                 steamId64: steamId64,
                 player: player,
+                time: time,
+            });
+        } catch(e) {
+            Logger.verbose('APIClient', 1, 'Could not post AdminCameraUnposses Event. Error: ' + e.message);
+        }
+    }
+
+    async postPlayerWarned(serverId, player, message, time) {
+        try {
+            await this._post(routes.definitions.warned, {
+                server: serverId,
+                player: player,
+                message: message,
+                time: time,
+            });
+        } catch(e) {
+            Logger.verbose('APIClient', 1, 'Could not post AdminCameraUnposses Event. Error: ' + e.message);
+        }
+    }
+
+    async postPlayerKicked(serverId, steamId64, player, time) {
+        try {
+            await this._post(routes.definitions.kicked, {
+                server: serverId,
+                steamId64: steamId64,
+                player: player,
+                time: time,
+            });
+        } catch(e) {
+            Logger.verbose('APIClient', 1, 'Could not post AdminCameraUnposses Event. Error: ' + e.message);
+        }
+    }
+
+    async postPlayerBanned(serverId, steamId64, player, interval, time) {
+        try {
+            await this._post(routes.definitions.banned, {
+                server: serverId,
+                steamId64: steamId64,
+                player: player,
+                interval: interval,
                 time: time,
             });
         } catch(e) {

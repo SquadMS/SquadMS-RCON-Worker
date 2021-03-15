@@ -1,6 +1,13 @@
 export default {
-    getServers: '/api/rcon-worker/servers',
-    postChatMessage: '/api/rcon-worker/chat-message',
-    postAdminCameraPosessed: '/api/rcon-worker/camera-posess',
-    postAdminCameraUnposessed: '/api/rcon-worker/camera-unposess',
+    base: '/api/rcon-worker/',
+
+    definitions: {
+        getServers: 'servers',
+        chatMessage: 'chat-message',
+        camPosessed: 'camera-posess',
+        camUnposessed: 'camera-unposess',
+        warned: 'warned',
+        kicked: 'kicked',
+        banned: 'banned',
+    }
 }

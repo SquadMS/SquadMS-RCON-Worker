@@ -82,7 +82,7 @@ export default class SquadRcon extends Rcon {
       this.emit('PLAYER_WARNED', {
         raw: decodedPacket.body,
         name: matchWarn[1],
-        reason: matchWarn[2],
+        message: matchWarn[2],
         time: new Date()
       });
 
