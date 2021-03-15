@@ -2,6 +2,8 @@ import arg from 'arg';
 import dotenv from 'dotenv';
 import path from 'path';
 
+import './prototypes/Date.js';
+
 import SquadRCONWorker from'./SquadRCONWorker.js';
 import Logger from './RCON/core/logger.js';
 Logger.setVerboseness('Bootstrap', 1);
