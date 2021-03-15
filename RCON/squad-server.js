@@ -72,6 +72,55 @@ export default class SquadRcon extends Rcon {
         time: new Date()
       });
     }
+
+    const matchWarn = decodedPacket.body.match(
+      /Remote admin has warned player (.*)\. Message was "(.*)"/
+    );
+    if (matchWarn) {
+      Logger.verbose('SquadRcon', 2, `Matched warn message: ${decodedPacket.body}`);
+
+      this.emit('PLAYER_WARNED', {
+        raw: decodedPacket.body,
+        name: matchWarn[1],
+        reason: matchWarn[2],
+        time: new Date()
+      });
+
+      return;
+    }
+
+    const matchKick = decodedPacket.body.match(
+      /Kicked player ([0-9]+)\. \[steamid=([0-9]{17})] (.*)/
+    );
+    if (matchKick) {
+      Logger.verbose('SquadRcon', 2, `Matched kick message: ${decodedPacket.body}`);
+
+      this.emit('PLAYER_KICKED', {
+        raw: decodedPacket.body,
+        playerID: matchKick[1],
+        steamID: matchKick[2],
+        name: matchKick[3],
+        time: new Date()
+      });
+
+      return;
+    }
+
+    const matchBan = decodedPacket.body.match(
+      /Banned player ([0-9]+)\. \[steamid=(.*?)\] (.*) for interval (.*)/
+    );
+    if (matchBan) {
+      Logger.verbose('SquadRcon', 2, `Matched ban message: ${decodedPacket.body}`);
+
+      this.emit('PLAYER_BANNED', {
+        raw: decodedPacket.body,
+        playerID: matchBan[1],
+        steamID: matchBan[2],
+        name: matchBan[3],
+        interval: matchBan[4],
+        time: new Date()
+      });
+    }
   }
 
   async getCurrentMap() {
