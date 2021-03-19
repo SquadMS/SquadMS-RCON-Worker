@@ -42,7 +42,7 @@ if (args['--version']) {
 }
 
 /* Load .ENV */
-const envPath = args['--env'] ?? path.resolve(process.cwd() + '.env');
+const envPath = args['--env'] ?? path.resolve(process.cwd() + '/.env');
 Logger.verbose('Bootstrap', 1, 'Loading .env from "' + envPath + '"...');
 dotenv.config({
     path: envPath,
