@@ -62,10 +62,10 @@ export default class SquadRCONWorker {
     }
 
     async init() {
-        this.apiClient = new APIClient(process.env.SQMS_SJSWORKER_API_HOST || 'http://localhost', process.env.SQMS_SJSWORKER_AUTH_TOKEN || null);
+        this.apiClient = new APIClient(process.env.SQMS_WORKER_API_HOST || 'http://localhost', process.env.SQMS_WORKER_AUTH_TOKEN || null);
         this.apiServer = new APIServer({
-            host: process.env.SQMS_SJSWORKER_IP || '0.0.0.0', 
-            post: process.env.SQMS_SJSWORKER_PORT || 8080,
+            host: process.env.SQMS_WORKER_BIND_IP || '0.0.0.0', 
+            port: process.env.SQMS_WORKER_BIND_PORT || 8080,
             serverUpdatedCallback: this.serverUpdatedCallback.bind(this),
             serverCommandCallback: this.serverCommandCallback.bind(this),
         });
