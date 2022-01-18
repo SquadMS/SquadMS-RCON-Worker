@@ -6,7 +6,7 @@ Does solve the multiple RCON connections issue efficiently if used correctly. Cu
 - Node.js
 - NPM
 
-If you are on a debian devirate, you can install the latest version of Node.js and NPM using the following command:
+If you are on a debian derivate, you can install the latest version of Node.js and NPM using the following command:
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt install nodejs npm && sudo npm i -g n && sudo n latest
 ```
