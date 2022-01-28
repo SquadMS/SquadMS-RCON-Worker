@@ -75,7 +75,7 @@ export default class SquadRCONWorker {
     async run() {
         await this.init();
 
-        while(this.running) {
+        while (this.running) {
             await this.syncServers();
             
             await this.sleep(15000);
@@ -99,7 +99,7 @@ export default class SquadRCONWorker {
     }
 
     async syncServers(changed = null) {
-        /* If there is a changed server that has been blacklisted unlist it */
+        /* Reset the failed count for the changed server since the configration could have been modified */
         if (Object.keys(this.connectionFailed).includes(changed)) {
             this.connectionFailed[changed] = 0;
         }
@@ -122,7 +122,7 @@ export default class SquadRCONWorker {
             remoteIds.push(parseInt(datum.id));
 
             /* Add and watch server if it does not already exist */
-            if (!this.servers[datum.id] && (!this.connectionFailed[datum.id] || this.connectionFailed[datum.id] <= 2)) {
+            if (! this.servers[datum.id]) {
                 await this.addServer(datum);
             }
         }
