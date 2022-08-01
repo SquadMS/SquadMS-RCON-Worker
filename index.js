@@ -9,7 +9,7 @@ import Logger from './RCON/core/logger.js';
 Logger.setVerboseness('Bootstrap', 1);
 
 /* Load package.json */
-import packageJSON from './package.json';
+import packageJSON from './package.json' assert {type: 'json'};
 
 /* Retrieve CLI arguments */
 const args = arg({
