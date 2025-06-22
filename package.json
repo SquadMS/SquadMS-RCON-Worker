@@ -1,0 +1,22 @@
+{
+  "name": "squad-rcon-worker",
+  "version": "1.0.0",
+  "description": "Basically a HTTP API for Squad RCON supporting multiple servers.",
+  "license": "GPL-3.0-only",
+  "author": "Patrick Henninger <privat@skyraptor.eu> (https://skyraptor.eu)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Deutsche-Squad-Gemeinschaft/Logistik-Helfer-Bot.git"
+  },
+  "type": "commonjs",
+  "main": "src/main.ts",
+  "scripts": {
+    "start": "deno src/index.js"
+  },
+  "dependencies": {
+    "arg": "^5.0.2",
+    "dotenv": "^16.5.0",
+    "inversify": "^7.5.2",
+    "winston": "^3.17.0"
+  }
+}
