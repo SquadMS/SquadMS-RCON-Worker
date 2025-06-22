@@ -1,0 +1,7 @@
+# Package Manager
+package-lock.json
+deno.lock
+node_modules
+
+# Configuration
+.env
