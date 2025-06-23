@@ -1,2 +1,3 @@
-# Squad RCON Worker
+# SquadMS RCON Worker
+
 TODO
