@@ -1,6 +1,6 @@
-import { Container } from "inversify"
+import { Container } from "inversify";
 
 // Initialize the application's Container singleton
-const container: Container = new Container()
+const container: Container = new Container();
 
-export default container
+export default container;

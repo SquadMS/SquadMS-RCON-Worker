@@ -1,6 +1,4 @@
 import Application from "./Application.ts";
-import CommandsServiceProvider from "./Commands/CommandsServiceProvider.ts";
-import DiscordServiceProvider from "./Discord/DiscordServiceProvider.ts";
 import { app } from "./Helpers.ts";
 import LoggingServiceProvider from "./Logging/LoggingServiceProvider.ts";
 import ServiceProvider from "./Foundation/ServiceProvider.ts";
@@ -9,30 +7,30 @@ import { ApplicationInterface } from "./Foundation/ApplicationInterface.ts";
 import CoreServiceProvider from "./CoreServiceProvider.ts";
 import { serviceId as logServiceId } from "./Logging/Log.ts";
 
-export async function bootstrap(providers: Newable<ServiceProvider>[] = []): Promise<ApplicationInterface> {
+export async function bootstrap(
+    providers: Newable<ServiceProvider>[] = [],
+): Promise<ApplicationInterface> {
     // Initialize the application and set it's singleton instance
     Application.setInstance(
-        new Application
-    )
+        new Application(),
+    );
 
     // Add the core services
     providers.push(...[
         LoggingServiceProvider,
-        DiscordServiceProvider,
-        CommandsServiceProvider,
-        CoreServiceProvider
-    ])
+        CoreServiceProvider,
+    ]);
 
     // Load service providers
     for (const provider of providers) {
-        app().registerProvider(provider)
+        app().registerProvider(provider);
     }
 
     // Register and boot
-    await app().register()
-    await app().boot()
+    await app().register();
+    await app().boot();
 
-    app().get(logServiceId).logger.info('Successfully booted the application.')
+    app().get(logServiceId).logger.info("Successfully booted the application.");
 
-    return app()
+    return app();
 }

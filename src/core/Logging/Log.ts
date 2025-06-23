@@ -1,13 +1,12 @@
-import { injectable, ServiceIdentifier } from 'inversify';
-import winston from 'winston'
-import type { VerbosityString } from './Verbosity.ts';
+import { injectable, ServiceIdentifier } from "inversify";
+import winston from "winston";
+import type { VerbosityString } from "./Verbosity.ts";
 
 // Define the container service identifier for this service
-export const serviceId: ServiceIdentifier<Log> = Symbol.for('Log')
+export const serviceId: ServiceIdentifier<Log> = Symbol.for("Log");
 
-@injectable('Singleton')
-export class Log
-{
+@injectable("Singleton")
+export class Log {
     // Instance of the Winston logging library
     public readonly logger: winston.Logger;
 
@@ -25,17 +24,15 @@ export class Log
         /**
          * Determines the level of the internal winston instance.
          */
-        level: VerbosityString = 'error',
-
+        level: VerbosityString = "error",
         /**
          * Defines the filename of the persistent log file.
          */
-        file: string = 'app.log',
-
+        file: string = "app.log",
         /**
          * Toggles log output to the console.
          */
-        logToConsole: boolean = true
+        logToConsole: boolean = true,
     ) {
         // Initialize winston with the provided configuration
         this.logger = winston.createLogger({
@@ -44,16 +41,18 @@ export class Log
             transports: [
                 // Write all logs to file
                 new winston.transports.File({
-                    filename: file
-                })
-            ]
-        })
+                    filename: file,
+                }),
+            ],
+        });
 
         // Determine if logs should be shown to console
         if (logToConsole) {
-            this.logger.add(new winston.transports.Console({
-                format: winston.format.simple()
-            }))
+            this.logger.add(
+                new winston.transports.Console({
+                    format: winston.format.simple(),
+                }),
+            );
         }
 
         // Map redirected Winston methods
